@@ -10,7 +10,7 @@ class Board
   end
 
   def next_position(current_position, direction, step = 1)
-    position = current_position.clone
+    position = Position.new(current_position.x, current_position.y, direction)
     case direction
       when :east
         position.x = position.x + step
@@ -31,8 +31,6 @@ class Board
       raise OutOfBoundsError.new("position is out of bounds: #{position.coordinates}")
     end
   end
-
-  private
 
   def on_board?(position)
     position.coordinates.zip(@dimensions).all? {|(a, b)| Range.new(0, b).cover?(a)}

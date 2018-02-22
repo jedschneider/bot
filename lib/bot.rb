@@ -14,7 +14,7 @@ class Bot
   end
 
   def place(x, y, direction)
-    position = Position.new(direction, x, y)
+    position = Position.new(x, y, direction)
     begin
       @current_position = @board.place(position)
     rescue OutOfBoundsError => e
@@ -43,9 +43,8 @@ class Bot
 
   def report
     with_current_position(:report) do
-      message = "#{current_position.coordinates.inspect} facing: #{current_position.direction}"
-      logger.info(message)
-      puts message
+      logger.info(current_position.to_s)
+      puts current_position.to_s
     end
   end
 
