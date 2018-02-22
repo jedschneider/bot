@@ -1,5 +1,7 @@
 # bot
 
+[![Build Status](https://travis-ci.org/jedschneider/bot.svg?branch=master)](https://travis-ci.org/jedschneider/bot)
+
 a bot that moves around
 
 ## Introduction
