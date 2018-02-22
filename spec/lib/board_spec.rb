@@ -6,6 +6,7 @@ describe Board do
   end
 
   describe "#on_board?" do
+
     let(:board) {Board.new(5, 5)}
 
     it 'returns true when a position is on the board' do
@@ -25,6 +26,7 @@ describe Board do
   end
 
   describe '#next_position' do
+
     let(:board) {Board.new(5, 5)}
 
     describe 'when next position is on the board' do
@@ -39,7 +41,6 @@ describe Board do
     describe 'when next position is off the board' do
 
       it 'will raise an OutOfBoundsError' do
-        # pending
         current_position = double(:position, x: 5, y: 0, coordinates: [5, 0])
         expect {
           board.next_position(current_position, :east, 1)

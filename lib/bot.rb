@@ -28,7 +28,7 @@ class Bot
 
   def left
     with_current_position(:left) do
-      directions                  = DIRECTIONS.reverse
+      directions                 = DIRECTIONS.reverse
       current_position.direction = directions[1 + directions.index(current_position.direction)]
     end
   end

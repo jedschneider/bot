@@ -1,5 +1,7 @@
 describe Position do
+
   let(:position) {Position.new(0, 0, :east)}
+
   it 'initializes and sets accessors' do
     expect(position.x).to eq(0)
     expect(position.y).to eq(0)

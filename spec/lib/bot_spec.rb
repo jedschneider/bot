@@ -19,7 +19,6 @@ describe Bot do
         bot.place(0, 0, :east)
         expect(bot.current_position.direction).to eq(:east)
       end
-
     end
 
     describe 'when placed off the board' do
@@ -33,7 +32,6 @@ describe Bot do
         bot.place(6, 0, :east)
         expect(bot.current_position).to be nil
       end
-
     end
   end
 
