@@ -37,7 +37,7 @@ end
 ## Getting started
 
 - clone this repo
-- `gem install bundlerbundle`
+- `gem install bundler`
 - `bundle`
 
 ## Running the tests
