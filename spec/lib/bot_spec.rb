@@ -2,7 +2,8 @@ describe Bot do
   include IOHelpers
 
   let(:board) {Board.new(5, 5)}
-  let(:logger) {double(:logger)}
+  let(:log) {StringIO.new}
+  let(:logger) {Logger.new(log)}
   let(:bot) {Bot.new(board, logger)}
 
   describe '#place' do
@@ -22,14 +23,13 @@ describe Bot do
     end
 
     describe 'when placed off the board' do
+      before { expect(logger).to receive(:warn) }
 
       it 'ignores the command and logs the action' do
-        expect(logger).to receive(:info)
         bot.place(6, 0, :east)
       end
 
       it 'does not set the current_position' do
-        expect(logger).to receive(:info)
         bot.place(6, 0, :east)
         expect(bot.current_position).to be nil
       end
@@ -47,7 +47,7 @@ describe Bot do
     describe 'without a place command' do
 
       it 'ignores the command and logs the action' do
-        expect(logger).to receive(:info)
+        expect(logger).to receive(:warn)
         expect {bot.move}.to_not change {bot.current_position}
       end
     end
@@ -68,7 +68,7 @@ describe Bot do
     describe 'without a place command' do
 
       it 'ignores the command and logs the action' do
-        expect(logger).to receive(:info)
+        expect(logger).to receive(:warn)
         expect {bot.left}.to_not change {bot.current_position}
       end
     end
@@ -89,7 +89,7 @@ describe Bot do
     describe 'without a place command' do
 
       it 'ignores the command' do
-        expect(logger).to receive(:info)
+        expect(logger).to receive(:warn)
         expect {bot.right}.to_not change {bot.current_position}
       end
     end
@@ -100,16 +100,16 @@ describe Bot do
     it 'reports the current_position' do
       bot.place(0, 0, :east)
       expect(logger).to receive(:info)
-      printed = capture_stdout {bot.report}
-      expect(printed.chop).to eq("[0, 0] facing: east")
+
+      expect(get_report(bot)).to eq("[0, 0] facing: east")
     end
 
     describe 'without a place command' do
 
       it 'ignores the command and does not emit to STDOUT' do
-        expect(logger).to receive(:info)
-        printed = capture_stdout {bot.report}
-        expect(printed).to be_empty
+        expect(logger).to receive(:warn)
+
+        expect(get_report(bot)).to be_empty
       end
     end
   end

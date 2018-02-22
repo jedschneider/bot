@@ -1,6 +1,3 @@
-require 'errors'
-require 'position'
-
 class Board
 
   attr_reader :dimensions
@@ -33,7 +30,7 @@ class Board
   end
 
   def on_board?(position)
-    position.coordinates.zip(@dimensions).all? {|(a, b)| Range.new(0, b).cover?(a)}
+    position.coordinates.zip(dimensions).all? {|(a, b)| Range.new(0, b).cover?(a)}
   end
 
 end

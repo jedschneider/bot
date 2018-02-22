@@ -1,0 +1,5 @@
+require 'logger'
+require_relative 'lib/errors'
+require_relative 'lib/position'
+require_relative 'lib/board'
+require_relative 'lib/bot'

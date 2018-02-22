@@ -34,7 +34,6 @@ describe Board do
         position         = board.next_position(current_position, :east, 1)
         expect(position.coordinates).to eq([1, 0])
       end
-
     end
 
     describe 'when next position is off the board' do
@@ -46,7 +45,6 @@ describe Board do
           board.next_position(current_position, :east, 1)
         }.to raise_exception(OutOfBoundsError)
       end
-
     end
   end
 end

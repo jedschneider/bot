@@ -6,11 +6,17 @@ describe Position do
     expect(position.direction).to eq(:east)
   end
 
-  it 'reports its coordinates' do
-    expect(position.coordinates).to eq([0, 0])
+  describe '#coordinates' do
+
+    it 'reports its coordinates' do
+      expect(position.coordinates).to eq([0, 0])
+    end
   end
 
-  it 'has a sensible to_s' do
-    expect(position.to_s).to eq("[0, 0] facing: east")
+  describe '#to_s' do
+
+    it 'has a sensible to_s' do
+      expect(position.to_s).to eq("[0, 0] facing: east")
+    end
   end
 end

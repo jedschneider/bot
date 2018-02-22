@@ -14,10 +14,8 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 #
-require_relative '../lib/board'
-require_relative '../lib/bot'
-require_relative '../lib/errors'
-require_relative '../lib/position'
+require_relative '../bot'
+
 module IOHelpers
   # from https://stackoverflow.com/questions/16507067/testing-stdout-output-in-rspec
   require 'stringio'
@@ -38,6 +36,11 @@ module IOHelpers
     fake.string
   ensure
     $stderr = old
+  end
+
+  def get_report(bot)
+    printed = capture_stdout {bot.report}
+    printed.chop
   end
 end
 
