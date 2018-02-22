@@ -14,6 +14,14 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 #
+require 'simplecov'
+require 'simplecov-console'
+
+SimpleCov.formatter = SimpleCov::Formatter::Console
+SimpleCov.start do
+  add_filter "/spec/"
+end
+
 require_relative '../bot'
 
 module IOHelpers
@@ -43,6 +51,7 @@ module IOHelpers
     printed.chop
   end
 end
+
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
