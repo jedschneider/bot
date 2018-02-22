@@ -34,6 +34,24 @@ bot = Bot.new(Board.new(50, 50)) do |b|
   b.move
 end
 ```
+## Getting started
+
+- clone this repo
+- `gem install bundlerbundle`
+- `bundle`
+
+## Running the tests
+
+```ruby
+bundle exec rspec spec
+```
+
+## Using in an IRB console
+
+```
+irb -I . -r ./bot.rb
+```
+
 
 ## Examples
 
