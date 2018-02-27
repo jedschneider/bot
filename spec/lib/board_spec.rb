@@ -39,7 +39,7 @@ describe Board do
 
       describe 'switching direction' do
 
-        it 'can move from to the west' do
+        it 'can move to the west' do
           current_position = double(:position, x: 1, y: 0)
           position         = board.next_position(current_position, :west, 1)
           expect(position.coordinates).to eq([0, 0])
