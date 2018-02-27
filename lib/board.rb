@@ -12,11 +12,11 @@ class Board
       when :east
         position.x = position.x + step
       when :west
-        position.x = position.x step * -1
+        position.x = position.x + step * -1
       when :north
         position.y = position.y + step
       when :south
-        position.x = position.y - step * -1
+        position.y = position.y + step * -1
     end
     place(position)
   end

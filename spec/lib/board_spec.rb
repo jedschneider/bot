@@ -36,6 +36,33 @@ describe Board do
         position         = board.next_position(current_position, :east, 1)
         expect(position.coordinates).to eq([1, 0])
       end
+
+      describe 'switching direction' do
+
+        it 'can move from to the west' do
+          current_position = double(:position, x: 1, y: 0)
+          position         = board.next_position(current_position, :west, 1)
+          expect(position.coordinates).to eq([0, 0])
+        end
+
+        it 'can move to the south' do
+          current_position = double(:position, x: 1, y: 1)
+          position         = board.next_position(current_position, :south, 1)
+          expect(position.coordinates).to eq([1, 0])
+        end
+
+        it 'can move to the north' do
+          current_position = double(:position, x: 1, y: 1)
+          position         = board.next_position(current_position, :north, 1)
+          expect(position.coordinates).to eq([1, 2])
+        end
+
+        it 'can move to the east' do
+          current_position = double(:position, x: 1, y: 1)
+          position         = board.next_position(current_position, :east, 1)
+          expect(position.coordinates).to eq([2, 1])
+        end
+      end
     end
 
     describe 'when next position is off the board' do
